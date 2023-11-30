@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List App</title>
+  <style>
+    /* Basic styling for the to-do list */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #todoList {
+      margin-top: 20px;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>To-Do List</h1>
+
+  <div>
+    <!-- Input field to add new tasks -->
+    <input type="text" id="taskInput" placeholder="Add a new task">
+    <button onclick="addTask()">Add Task</button>
+  </div>
+
+  <ul id="todoList">
+    <!-- List to display tasks -->
+  </ul>
+
+  <script>
+    // Function to add a new task
+    function addTask() {
+      const taskInput = document.getElementById('taskInput');
+      const taskText = taskInput.value.trim();
+
+      if (taskText !== '') {
+        // Create a new list item
+        const newTask = document.createElement('li');
+        newTask.textContent = taskText;
+
+        // Add click event to mark task as completed
+        newTask.addEventListener('click', function() {
+          this.classList.toggle('completed');
+        });
+
+        // Append the new task to the list
+        document.getElementById('todoList').appendChild(newTask);
+
+        // Clear the input field
+        taskInput.value = '';
+      }
+    }
+  </script>
+
+</body>
+</html>
